@@ -1,7 +1,11 @@
 import model.*;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Movie movie1 = new Movie(
                 "The Witcher",

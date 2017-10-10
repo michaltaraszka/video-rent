@@ -1,6 +1,8 @@
 package model;
 
-public class CastMember extends Person {
+import java.io.Serializable;
+
+public class CastMember extends Person implements Serializable {
     public enum Role {
         ACTOR,
         DIRECTOR,
