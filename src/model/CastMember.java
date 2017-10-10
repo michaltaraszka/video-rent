@@ -15,14 +15,4 @@ public class CastMember extends Person {
         this.role = role;
         this.yearOfBirth = yearOfBirth;
     }
-
-    public String toJSON() {
-        StringBuffer JSON = new StringBuffer("{");
-        JSON.append("name: \"").append(name).append("\", ");
-        JSON.append("role: \"").append(role).append("\", ");
-        JSON.append("yearOfBirth: ").append(yearOfBirth);
-        JSON.append("}");
-
-        return JSON.toString();
-    }
 }

@@ -50,30 +50,4 @@ public class Movie implements Serializable{
         this.price = price;
         this.taken = false;
     }
-
-    public String toJSON() {
-        StringBuffer JSON =  new StringBuffer("{\n");
-
-        JSON.append("title: \"").append(title).append("\", \n");
-        JSON.append("productionYear: \"").append(productionYear).append("\", \n");
-        JSON.append("synopsis: \"").append(synopsis).append("\", \n");
-        JSON.append("producer: ").append(producer.toJSON()).append(", \n");
-        JSON.append("director: ").append(director.toJSON()).append(", \n");
-        JSON.append("screenwriter: ").append(screenwriter.toJSON()).append(", \n");
-
-        JSON.append("cast:[ \n");
-        for (CastMember actor: cast) {
-            JSON.append("    ").append(actor.toJSON()).append(", \n");
-        }
-        JSON.deleteCharAt(JSON.length() - 3);
-
-        JSON.append("], \n");
-
-        JSON.append("price: ").append(price).append(", \n");
-        JSON.append("taken: ").append(taken).append("\n");
-
-        JSON.append("}");
-
-        return JSON.toString();
-    }
 }
