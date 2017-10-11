@@ -21,5 +21,39 @@ public class Main {
                 1.99
         );
 
+        //Testing write
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("Movie.txt"));
+        out.writeObject(movie1);
+
+        //Testing read
+        FileInputStream fileInput = null;
+        ObjectInputStream objectInput = null;
+        Movie movie2 = null;
+
+        try {
+            fileInput = new FileInputStream("Movie.txt");
+            objectInput = new ObjectInputStream(fileInput);
+            movie2 = (Movie) objectInput.readObject();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (fileInput != null) {
+                try {
+                    fileInput.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (objectInput != null) {
+                try {
+                    objectInput.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        System.out.print(movie2.toString());
     }
 }
