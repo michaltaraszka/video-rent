@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Movie implements Serializable {
     //Basic info
     private String title;
-    private int productionYear;
+    private String productionYear;
 
     //Cast and crew
     private String synopsis;
@@ -20,7 +20,7 @@ public class Movie implements Serializable {
 
     //Getters
     public String getTitle() {return title;}
-    public int getProductionYear() {return productionYear;}
+    public String getProductionYear() {return productionYear;}
     public String getSynopsis() {return synopsis;}
     public CastMember getProducer() {return producer;}
     public CastMember getDirector() {return director;}
@@ -32,7 +32,7 @@ public class Movie implements Serializable {
     //Constructor
     public Movie(
             String title,
-            int productionYear,
+            String productionYear,
             String synopsis,
             CastMember producer,
             CastMember director,

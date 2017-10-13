@@ -12,7 +12,7 @@ public class CastMember extends Person implements Serializable {
 
     private Role role;
 
-    public CastMember(String name, Role role, int yearOfBirth) {
+    public CastMember(String name, Role role, String yearOfBirth) {
         this.name = name;
         this.role = role;
         this.yearOfBirth = yearOfBirth;
