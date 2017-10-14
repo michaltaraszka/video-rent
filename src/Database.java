@@ -24,4 +24,9 @@ public class Database {
     public void addRent(Customer customer, Movie movie, Date rentDate, Date returnDate) {
         rentList.add(new Rent(rentList.size(), customer, movie, rentDate, returnDate));
     }
+
+    public List<Movie> getMovieList() {return movieList;}
+    public List<CastMember> getCastMemberList() {return castMemberList;}
+    public List<Customer> getCustomerList() {return customerList;}
+    public List<Rent> getRentList() {return rentList;}
 }
