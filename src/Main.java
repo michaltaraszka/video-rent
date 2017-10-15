@@ -1,29 +1,37 @@
 import model.*;
 
 import java.io.*;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        Movie movie1 = new Movie(
-                "The Witcher",
-                1920,
-                "Nie no, spoko",
-                new CastMember("Tom Hanks", CastMember.Role.PRODUCER, 1950),
-                new CastMember("Rick Astley", CastMember.Role.DIRECTOR, 1960),
-                new CastMember("Antonio Banderas", CastMember.Role.SCREENWRITER, 1970),
-                new CastMember[]{
-                        new CastMember("Ant", CastMember.Role.ACTOR, 1950),
-                        new CastMember("Boy", CastMember.Role.ACTOR, 1966),
-                        new CastMember("Lel", CastMember.Role.ACTOR, 1977),
-                        new CastMember("Ziggy", CastMember.Role.ACTOR, 1988)
-                },
-                1.99
+        Database database = new Database();
+
+        database.addCastMember("Tom Hanks", CastMember.Role.PRODUCER, "1950");
+        database.addCastMember("Rick Astley", CastMember.Role.DIRECTOR, "1960");
+        database.addCastMember("Antonio Banderas", CastMember.Role.SCREENWRITER, "1970");
+        database.addCastMember("Ant", CastMember.Role.ACTOR, "1950");
+
+        List<CastMember> castMemberList = database.getCastMemberList();
+
+        database.addMovie("The Witcher",
+                "2012",
+                "Pretty good, I guess",
+                castMemberList.get(0),
+                castMemberList.get(1),
+                castMemberList.get(2),
+                castMemberList,
+                2.50
         );
+
+        List<Movie> movies = database.getMovieList();
+
+
 
         //Testing write
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("Movie.txt"));
-        out.writeObject(movie1);
+        out.writeObject(movies.get(0));
 
         //Testing read
         FileInputStream fileInput = null;

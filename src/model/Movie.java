@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.*;
 
 public class Movie implements Serializable {
     //Basic info
@@ -12,7 +13,7 @@ public class Movie implements Serializable {
     private CastMember producer;
     private CastMember director;
     private CastMember screenwriter;
-    private CastMember[] cast;
+    private List<CastMember> cast;
 
     //Rental info
     private double price;
@@ -26,7 +27,7 @@ public class Movie implements Serializable {
     public CastMember getDirector() {return director;}
     public CastMember getScreenwriter() {return screenwriter;}
     public boolean isTaken() {return taken;}
-    public CastMember[] getCast() {return cast;}
+    public List<CastMember> getCast() {return cast;}
     public double getPrice() {return price;}
 
     //Constructor
@@ -37,7 +38,7 @@ public class Movie implements Serializable {
             CastMember producer,
             CastMember director,
             CastMember screenwriter,
-            CastMember[] cast,
+            List<CastMember> cast,
             double price
     ) {
         this.title = title;
