@@ -1,7 +1,6 @@
 import model.*;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class Database {
     List<Movie> movieList;
@@ -9,11 +8,18 @@ public class Database {
     List<Customer> customerList;
     List<Rent> rentList;
 
-    public void addCastMember(String name, CastMember.Role role, String yearOfBirth) {
-        castMemberList.add(new CastMember(name, role, yearOfBirth));
+    Database() {
+        movieList = new ArrayList<>();
+        castMemberList = new ArrayList<>();
+        customerList = new ArrayList<>();
+        rentList = new ArrayList<>();
     }
 
-    public void addMovie(String title, String productionYear, String synopsis, CastMember producer, CastMember director, CastMember screenwriter, CastMember[] actors, double price) {
+    public void addCastMember(String name, CastMember.Role role, String yearOfBirth) {
+        castMemberList.add(new model.CastMember(name, role, yearOfBirth));
+    }
+
+    public void addMovie(String title, String productionYear, String synopsis, CastMember producer, CastMember director, CastMember screenwriter, List<CastMember> actors, double price) {
         movieList.add(new Movie(title, productionYear, synopsis, producer, director, screenwriter, actors, price));
     }
 
