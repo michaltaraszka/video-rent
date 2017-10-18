@@ -27,9 +27,9 @@ public class Main {
 
         List<Movie> movies = database.getMovieList();
 
-        database.save("Data.txt");
+        database.save("data/Database.txt");
 
-        Database database1 = Database.read("Data.txt");
+        Database database1 = Database.read("data/Database.txt");
 
         System.out.print(database1);
     }
