@@ -1,8 +1,10 @@
 import model.*;
 
+import javax.xml.crypto.Data;
+import java.io.*;
 import java.util.*;
 
-public class Database {
+public class Database implements Serializable {
     List<Movie> movieList;
     List<CastMember> castMemberList;
     List<Customer> customerList;
@@ -35,4 +37,42 @@ public class Database {
     public List<CastMember> getCastMemberList() {return castMemberList;}
     public List<Customer> getCustomerList() {return customerList;}
     public List<Rent> getRentList() {return rentList;}
+
+    public void save(String filename) throws IOException {
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename));
+        out.writeObject(this);
+    }
+
+    public static Database read(String filename) {
+        //Testing read
+        FileInputStream fileInput = null;
+        ObjectInputStream objectInput = null;
+        Database db = null;
+
+        try {
+            fileInput = new FileInputStream(filename);
+            objectInput = new ObjectInputStream(fileInput);
+            db = (Database) objectInput.readObject();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (fileInput != null) {
+                try {
+                    fileInput.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (objectInput != null) {
+                try {
+                    objectInput.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        return db;
+    }
 }

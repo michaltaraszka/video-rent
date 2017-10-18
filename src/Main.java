@@ -1,10 +1,11 @@
 import model.*;
 
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException{
 
         Database database = new Database();
 
@@ -27,41 +28,10 @@ public class Main {
 
         List<Movie> movies = database.getMovieList();
 
+        database.save("Data.txt");
 
+        Database database1 = Database.read("Data.txt");
 
-        //Testing write
-        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("Movie.txt"));
-        out.writeObject(movies.get(0));
-
-        //Testing read
-        FileInputStream fileInput = null;
-        ObjectInputStream objectInput = null;
-        Movie movie2 = null;
-
-        try {
-            fileInput = new FileInputStream("Movie.txt");
-            objectInput = new ObjectInputStream(fileInput);
-            movie2 = (Movie) objectInput.readObject();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            if (fileInput != null) {
-                try {
-                    fileInput.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (objectInput != null) {
-                try {
-                    objectInput.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-
-        System.out.print(movie2.toString());
+        System.out.print(database1);
     }
 }
