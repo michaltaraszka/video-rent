@@ -53,24 +53,16 @@ public class Database implements Serializable {
             fileInput = new FileInputStream(filename);
             objectInput = new ObjectInputStream(fileInput);
             db = (Database) objectInput.readObject();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
         } finally {
-            if (fileInput != null) {
-                try {
-                    fileInput.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (objectInput != null) {
-                try {
+            try {
+                if (objectInput != null) {
                     objectInput.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
         }
 
         return db;
